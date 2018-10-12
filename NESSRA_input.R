@@ -1,3 +1,28 @@
+# !! NESSRAquery !!
+#
+# The funciton NESSRAquery downloads and merge a defined number of 
+# expressionSets coming from the same platform. 
+#
+# PARAMS: 
+# - platform: character, the desired platform to consider (e.g. "GPL198")
+# - organism: character, selecting the organism for that specific platform 
+#   (e.g. Arabidopsis thaliana). In our case NULL is ok.
+# - cores: numeric, number of cores to use to run in parallel (default = 1)
+# - expSubset: subset of random experiment to be extracted from the overall 
+#   available
+#
+# VALUE:
+# returns a nessraInput object. Accessors function are not implemented, it's an
+# S4 class object, so one can access to slots by using "@". At the moment, 
+# it contains just the final matrix and a data.frame object containing several 
+# platform informations. Other slots need to be added and implemented.
+#
+# EXAMPLE:
+# # If you want to download the whole experiments: 
+# out <- NESSRAquery("GLP198", expSubset = 2000, cores = 8)
+# # Else:
+# out <- NESSRAquery("GLP198", cores = 8) # will download just 5 random experiments
+
 library("GEOquery")
 require("Biobase")
 library("parallel")
