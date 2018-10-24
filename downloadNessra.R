@@ -34,11 +34,10 @@
 
 .concatMatrices <- function(dir, outdir, cores = 1) {
 
-    files <- list.files(path = ".", all.files = F)
+    files <- list.files(path = ".", all.files = F)[1:2]
     
-    files_opened <- mclapply(files, fread, mc.cores = 1)
-    fwrite(x = do.call(cbind, mclapply(files, fread, mc.cores = cores)), 
-           file = "output file")
+    fwrite(x = do.call(cbind, mclapply(files, function(x) fread(x)[,-1], 
+                                      mc.cores = cores)), file = "output file")
 }
 
 # wrapper ----------------------------------------------------------------------
