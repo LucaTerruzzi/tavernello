@@ -32,9 +32,6 @@ na_count <- sapply(NESSRAdata, function(y) sum(length(which(is.na(y)))))
 na_ind <- which(na_count!=0)
 na_cols <- colnames(NESSRAdata)[na_ind]
 not_na <- colnames(NESSRAdata)[-na_ind]
-na_only <- data.frame(na_only, row.names = na_cols)
-barplot(log(na_only[, "na_only"]), col = "darkblue", main = "NA histogram", 
-     border = "white", xlab = "Samples", ylab = "NAs")
 NESSRAdata <- NESSRAdata[ , ..not_na] # cleaning 
 
 # About characheter or whatever 
@@ -55,8 +52,12 @@ mean_ind <- which(mean_vect <= 25) # I think we could cut also less than 4...
 NESSRAdata <- NESSRAdata[, ..mean_ind]
 
 # new_mean_vect 
-new_mean_vect <- as.numeric(mclapply(NE SSRAdata, mean, mc.cores = 2))
+new_mean_vect <- as.numeric(mclapply(NESSRAdata, mean, mc.cores = 2))
 hist(new_mean_vect) # should adjust the cut over 50...
+boxplot(log(mean_vect + 1), log(new_mean_vect + 1))
+boxplot(mean_vect)
+boxplot(new_mean_vect)
 
+fwrite(NESSRAdata, file = "./Norm_data")
 
 
