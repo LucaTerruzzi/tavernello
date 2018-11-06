@@ -24,7 +24,8 @@
     
     all_data <- mclapply(GSEids, getExpr, mc.cores = cores)
         
-    print(paste0("Total number of eset passed: ", sum(as.logical(all_data))))
+    print(cat("Total number of eset passed: ", 
+                 sum(as.logical(all_data)), "on" , length(all_data)))
 }
 
 # run this function to concatenate matrices ------------------------------------
