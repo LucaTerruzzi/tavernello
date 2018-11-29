@@ -1,3 +1,7 @@
+#******************************************************************************
+# FOF (Functional Orthologous Finder) ahah This should be the main program  
+#******************************************************************************
+
 from Accessors.SmithWaterman import SmithWaterman 
 
 # example of SW call 
