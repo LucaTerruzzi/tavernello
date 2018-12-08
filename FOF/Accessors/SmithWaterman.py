@@ -106,8 +106,8 @@ def SmithWaterman(str1, str2, scores, par_file):
     gap_ext = scores[3]
     matrix = ConstructMatrix(str1, str2, match, mismatch, gap, gap_ext) 
     score = findMax(matrix)
-    l , k = getParams(par_file, scores)
-    norm_score = (score*l - math.log(k))/math.log(2)
+    #l , k = getParams(par_file, scores)
+    #norm_score = (score*l - math.log(k))/math.log(2)
     
-    return round(norm_score, 2)
-
+    #return round(norm_score, 2)
+    return score
