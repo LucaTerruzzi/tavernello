@@ -41,7 +41,7 @@ def align(seq1,seq2):
 
 def jaccard_similarity(x,y):
     inter = len(set.intersection(set(x), set(y)))
-    return inter / float(len(x) + len(y) - inter)
+    return inter / float(len(set(x)) + len(set(y)) - inter)
 
 
 # Compute the motifs for two example lists (should be the expansion lists)
@@ -88,11 +88,11 @@ print(sim)
 # Compute the ratio between the max and the other of a line of the matrix to see if things get better from sim_j/a to sim
 
 print("Jaccard")
-print(sim_j[0,:] / max(sim_j[0,:]))
+print(sim_j[4,:] / max(sim_j[4,:]))
 print("Align")
-print(sim_a[0,:] / max(sim_a[0,:]))
+print(sim_a[4,:] / max(sim_a[4,:]))
 print("Both")
-print(sim[0,:] / max(sim[0,:]))
+print(sim[4,:] / max(sim[4,:]))
 
 
 # Test for task
@@ -104,7 +104,4 @@ task_vv = FindMotifs(sample_task_vv)
 print(jaccard_similarity(task_at[0],task_vv[0]))
 print(jaccard_similarity(task_at[0],task_vv[1]))
 print(jaccard_similarity(task_at[0],task_vv[2]))
-
-
-
 
