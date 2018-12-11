@@ -37,3 +37,7 @@ rsconnect/
 .Rproj.user
 
 *.Rproj
+
+#Mac DS_Store
+.DS_Store
+
